@@ -53,7 +53,8 @@ You can optionally provide the following:
 - **FORCE_DEPLOY**: Force push the project to dokku, e.g. `FORCE_DEPLOY=true`
 - **HOST_KEY**: The results of running `ssh-keyscan -t rsa $HOST`. Use this if you want to check that the host you're deploying to is the right one (e.g. has the same keys).
 - **APP_CONFIG**: Set dokku config through github secrets. Example: `RAILS_MAX_THREADS=25 SECRET_KEY_BASE=xyz123&$%`.
-- **BRANCH**: The ability to deploy from a non-master branch.
+- **BRANCH**: The ability to deploy *from* a non-master branch. Defaults to 'HEAD'.
+- **DOKKU_BRANCH**: The ability to deploy *to* a non-master branch. Defaults to 'master'.
 
 ## License
 

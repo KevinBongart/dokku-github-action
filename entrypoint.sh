@@ -12,11 +12,13 @@ chmod 600 "$SSH_PATH/deploy_key"
 
 GIT_COMMAND="git push dokku@$HOST:$PROJECT"
 
-if [ -n "$BRANCH" ]; then
-    GIT_COMMAND="$GIT_COMMAND $BRANCH:master"
-else
-    GIT_COMMAND="$GIT_COMMAND HEAD:master"
-fi
+# If the BRANCH variable is not set or null, set it to 'HEAD'.
+BRANCH="${BRANCH:-HEAD}"
+
+# If the DOKKU_BRANCH variable is not set or null, set it to 'master'.
+DOKKU_BRANCH="${DOKKU_BRANCH:-master}"
+
+GIT_COMMAND="$GIT_COMMAND $BRANCH:$DOKKU_BRANCH"
 
 if [ -n "$FORCE_DEPLOY" ]; then
     echo "Enabling force deploy"
