@@ -40,6 +40,9 @@ if [ -n "$APP_CONFIG" ]; then
     $GIT_SSH_COMMAND dokku@$HOST config:set --no-restart $PROJECT $APP_CONFIG > /dev/null 2>&1
 fi
 
-echo "The deploy is starting"
+echo "The deploy is starting using GIT_COMMAND:"
+echo "$GIT_COMMAND"
+echo "And GIT_SSH_COMMAND:"
+echo "$GIT_SSH_COMMAND"
 
 GIT_SSH_COMMAND="$GIT_SSH_COMMAND" $GIT_COMMAND
